@@ -1,0 +1,36 @@
+.person {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  padding: 10px;
+  margin-left: 30px;
+}
+
+.person img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.person h4,
+.person p {
+  text-align: left;
+  margin: 10px 0;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+  font-size: 0.95rem;
+}
+
+.birthday-list-container h3,
+.birthday-form-container h1 {
+  margin: 20px 0 30px 40px;
+  letter-spacing: 1.8px;
+  opacity: 70%;
+}
+
+.person p {
+  opacity: 60%;
+}

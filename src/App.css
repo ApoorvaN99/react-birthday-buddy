@@ -1,0 +1,19 @@
+body {
+  background-color: rgb(245, 144, 184);
+  font-family: 'Tahoma';
+}
+
+.birthday-list-container {
+  width: 500px;
+  max-width: 90vw;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.birthday-list-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
