@@ -2,7 +2,7 @@ export default function calculate_age(personDob) {
   const dateArr = personDob.split('-');
   var now = new Date();
   const dateString = dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
-  console.log(dateString);
+  // console.log(dateString);
 
   var yearNow = now.getYear();
   var monthNow = now.getMonth();

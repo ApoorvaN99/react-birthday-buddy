@@ -8,6 +8,10 @@ export default function Home() {
         <h1>Birthday Buddy</h1>
       </header>
       <div className="menu-items">
+        <Link to="/all-birthdays" className="menu-item">
+          All birthdays
+        </Link>
+
         <Link to="/todays-birthdays" className="menu-item">
           Today's birthdays
         </Link>
