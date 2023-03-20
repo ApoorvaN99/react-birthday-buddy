@@ -20,9 +20,9 @@ export default function Home() {
           Add a birthday
         </Link>
 
-        <Link to="/configure-emails" className="menu-item">
+        {/* <Link to="/configure-emails" className="menu-item">
           Configure reminders
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
