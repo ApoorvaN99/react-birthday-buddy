@@ -14,7 +14,7 @@ export async function readData() {
 export async function writeData(newBdayObject) {
   try {
     const docRef = await addDoc(collection(db, 'birthdays'), newBdayObject);
-    console.log('Document written with ID: ', docRef.id);
+    // console.log('Document written with ID: ', docRef.id);
   } catch (e) {
     console.error('Error adding document: ', e);
   }

@@ -14,6 +14,7 @@ import { sendTodaysBirthdayMails, getTodaysBirthdays } from './logic/crud';
 function App() {
   const [people, setPeople] = useState(data);
   const [dbData, setDbData] = useState([]);
+
   useLayoutEffect(() => {
     async function fetchData() {
       let data = await readData();
@@ -39,20 +40,20 @@ function App() {
     console.log('Birthday written to DB!');
   };
 
-  const test = () => {
-    console.log('inside test');
-    const todaysDate = new Date().toISOString().split('T')[0];
-    console.log('dbData= ', dbData);
-    console.log('todaysDate= ', todaysDate);
-    for (let user of dbData) {
-      console.log('user.date= ', user.date);
-      if (user.date === todaysDate) console.log('test cron');
-    }
-  };
+  // const test = () => {
+  //   console.log('inside test');
+  //   const todaysDate = new Date().toISOString().split('T')[0];
+  //   console.log('dbData= ', dbData);
+  //   console.log('todaysDate= ', todaysDate);
+  //   for (let user of dbData) {
+  //     console.log('user.date= ', user.date);
+  //     if (user.date === todaysDate) console.log('test cron');
+  //   }
+  // };
 
   const tasks = [
     {
-      fn: test, //working, need to change to correct function
+      fn: sendTodaysBirthdayMails, //working, need to change to correct function
       id: '1',
       config: '* * * * *', // this runs every day at 12 am and 0 mins
       name: '',
