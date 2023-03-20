@@ -2,6 +2,7 @@ import sendEmail from './sendEmail';
 
 export const sendTodaysBirthdayMails = (dbData) => {
   const todaysDate = new Date().toISOString().split('T')[0];
+  // console.log(dbData);
   for (let user of dbData) {
     if (user.date === todaysDate) sendEmail(user.name, user.email);
   }

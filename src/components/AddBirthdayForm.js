@@ -2,34 +2,54 @@ import { useState } from 'react';
 import './AddBirthdayForm.css';
 
 export default function AddBirthdayForm({ addBirthday }) {
-  const [formValidity, setFormValidity] = useState(false);
+  const [nameValid, setNameValidity] = useState(false);
+  const [emailValid, setEmailValidity] = useState(false);
+  const [dobValid, setDobValidity] = useState(false);
+  const [imageValid, setImageValidity] = useState(false);
 
-  const handleFormValidation = (name, email, dob, image) => {
-    const nameValid = name.match(/[a-zA-Z]*/i) === '' ? false : true;
+  const handleUserInput = (e) => {
+    const name = e.target.name;
+    const fieldValue = e.target.value;
+    let value;
 
-    const emailValid =
-      email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/i) === '' ? false : true;
-
-    const dobValid =
-      dob.match(/[0-9]{4}\/[0-9]{2}\/[0-9]{2}/) === '' ? false : true;
-
-    const imageValid =
-      image.match(/.*\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP|JPEG)$/) === ''
-        ? false
-        : true;
-
-    return nameValid && emailValid && dobValid && imageValid;
+    switch (name) {
+      case 'name':
+        value = fieldValue.match(/[a-zA-Z]*/i) === '' ? false : true;
+        setNameValidity(value);
+        break;
+      case 'email':
+        value =
+          fieldValue.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/i) === '' ? false : true;
+        setEmailValidity(value);
+        break;
+      case 'dob':
+        value =
+          fieldValue.match(/[0-9]{4}\/[0-9]{2}\/[0-9]{2}/) === ''
+            ? false
+            : true;
+        setDobValidity(value);
+        break;
+      case 'image':
+        value =
+          fieldValue.match(
+            /.*\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP|JPEG)$/
+          ) === ''
+            ? false
+            : true;
+        setImageValidity(value);
+        break;
+      default:
+        console.log('did not match anythng');
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e);
     const name = e.target[0].value;
     const email = e.target[1].value;
     const dob = e.target[2].value;
     const image = e.target[3].value;
 
-    setFormValidity(handleFormValidation(name, email, dob, image));
     addBirthday(name, dob, image, email);
     e.target.reset();
   };
@@ -45,18 +65,50 @@ export default function AddBirthdayForm({ addBirthday }) {
         onSubmit={handleSubmit}
       >
         <label htmlFor="full-name">
-          Full Name <input id="full-name" type="text" required />
+          Full Name{' '}
+          <input
+            id="full-name"
+            type="text"
+            name="name"
+            onChange={handleUserInput}
+            required
+          />
         </label>
         <label htmlFor="email">
-          Email <input id="mail" type="mail" required />
+          Email{' '}
+          <input
+            id="mail"
+            type="mail"
+            name="email"
+            onChange={handleUserInput}
+            required
+          />
         </label>
         <label htmlFor="dob">
-          Date of birth <input id="dob" type="date" required />
+          Date of birth{' '}
+          <input
+            id="dob"
+            type="date"
+            name="dob"
+            onChange={handleUserInput}
+            required
+          />
         </label>
         <label htmlFor="image">
-          Image <input id="image" type="file" />
+          Image{' '}
+          <input
+            id="image"
+            type="file"
+            name="image"
+            onChange={handleUserInput}
+          />
         </label>
-        <button type="submit" disabled={formValidity ? false : true}>
+        <button
+          type="submit"
+          disabled={
+            (nameValid && emailValid && dobValid) || imageValid ? false : true
+          }
+        >
           Add
         </button>
       </form>

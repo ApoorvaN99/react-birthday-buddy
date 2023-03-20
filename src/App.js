@@ -12,7 +12,7 @@ import { readData, writeData } from './logic/firestore/firestoreOperations';
 import { sendTodaysBirthdayMails, getTodaysBirthdays } from './logic/crud';
 
 function App() {
-  const [people, setPeople] = useState(data);
+  const [people] = useState(data);
   const [dbData, setDbData] = useState([]);
 
   useLayoutEffect(() => {
@@ -53,7 +53,7 @@ function App() {
 
   const tasks = [
     {
-      fn: sendTodaysBirthdayMails, //working, need to change to correct function
+      fn: () => sendTodaysBirthdayMails(dbData), //working, need to change to correct function
       id: '1',
       config: '* * * * *', // this runs every day at 12 am and 0 mins
       name: '',
